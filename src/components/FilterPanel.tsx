@@ -28,6 +28,7 @@ const FilterPanel: FC<FilterPanelProps> = ({
         width: "250px",
         height: "100%",
         background: "#fff",
+        color: "#000",
         padding: "1rem",
         overflowY: "auto",
         zIndex: 1000,
