@@ -17,6 +17,7 @@ function extractYear(eruption: string | undefined): number | null {
 }
 
 export function filter(data: Volcano[]): Volcano[] {
+    console.log("data", data);
   return [...data]
     .filter((v) => extractYear(v.lastEruption) !== null && v.lastEruption !== "Unknown")
     .sort((a, b) =>
