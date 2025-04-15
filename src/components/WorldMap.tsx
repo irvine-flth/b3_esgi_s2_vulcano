@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
-type Volcano = {
+export interface Volcano {
   id?: number;
   name: string;
   latitude: number;
@@ -9,14 +9,14 @@ type Volcano = {
   elevation?: number;
   type?: string;
   country?: string;
-};
+}
 
 interface WorldMapProps {
   volcanoList: Volcano[];
 }
 
 const WorldMap: FC<WorldMapProps> = ({ volcanoList }) => {
-  const position: [number, number] = [20, 0]; // centre du monde
+  const position: [number, number] = [20, 0];
 
   return (
     <MapContainer
@@ -32,7 +32,10 @@ const WorldMap: FC<WorldMapProps> = ({ volcanoList }) => {
       {volcanoList.map((volcano) => (
         <Marker
           key={volcano.id ?? volcano.name}
-          position={[volcano.latitude, volcano.longitude]}
+          position={[
+            parseFloat(volcano.latitude),
+            parseFloat(volcano.longitude),
+          ]}
         >
           <Popup>
             <strong>{volcano.name}</strong>
