@@ -65,6 +65,10 @@ function App() {
     new Set(allVolcanoes.map((v) => v.country).filter(Boolean))
   ).sort();
 
+  const regionOptions = Array.from(
+    new Set(allVolcanoes.map((v) => v.regionGroup).filter(Boolean))
+  ).sort();
+
   return (
     <div style={{ position: "relative" }}>
       <FilterPanel
@@ -78,6 +82,7 @@ function App() {
         onToggleFilter={toggleFilter}
         onSelectChange={handleSelectChange}
         countryOptions={countryOptions}
+        regionOptions={regionOptions}
       />
       <WorldMap volcanoList={filteredVolcanoes} />
     </div>

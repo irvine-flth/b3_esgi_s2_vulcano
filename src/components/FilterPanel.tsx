@@ -7,6 +7,7 @@ interface FilterPanelProps {
   onToggleFilter: (filter: string) => void;
   onSelectChange: (filterId: string, value: string) => void;
   countryOptions?: string[];
+  regionOptions?: string[];
 }
 
 const FilterPanel: FC<FilterPanelProps> = ({
@@ -16,6 +17,7 @@ const FilterPanel: FC<FilterPanelProps> = ({
   onToggleFilter,
   onSelectChange,
   countryOptions,
+  regionOptions,
 }) => {
   return (
     <div
@@ -48,7 +50,7 @@ const FilterPanel: FC<FilterPanelProps> = ({
             </>
           )}
 
-          {filter.type === "select" && (
+          {filter.type === "select" && filter.id === "ByCountry" && (
             <>
               <label htmlFor={filter.id}>{filter.label}</label>
               <select
@@ -60,6 +62,24 @@ const FilterPanel: FC<FilterPanelProps> = ({
                 {countryOptions?.map((country) => (
                   <option key={country} value={country}>
                     {country}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
+
+          {filter.type === "select" && filter.id === "ByRegion" && (
+            <>
+              <label htmlFor={filter.id}>{filter.label}</label>
+              <select
+                id={filter.id}
+                value={selectedValues[filter.id] || ""}
+                onChange={(e) => onSelectChange(filter.id, e.target.value)}
+              >
+                <option value="">-- Sélectionner un continent --</option>
+                {regionOptions?.map((region) => (
+                  <option key={region} value={region}>
+                    {region}
                   </option>
                 ))}
               </select>
