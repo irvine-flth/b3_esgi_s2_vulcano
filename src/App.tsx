@@ -8,6 +8,9 @@ function App() {
   const [allVolcanoes, setAllVolcanoes] = useState<Volcano[]>([]);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [filteredVolcanoes, setFilteredVolcanoes] = useState<Volcano[]>([]);
+  const [selectedValues, setSelectedValues] = useState<Record<string, string>>(
+    {}
+  );
 
   useEffect(() => {
     fetch("/data/vulcanoes.json")
@@ -20,7 +23,12 @@ function App() {
 
     filters.forEach((f) => {
       if (activeFilters.includes(f.id)) {
-        result.push(...f.filter(allVolcanoes));
+        const param = selectedValues[f.id];
+        const output =
+          f.type === "select"
+            ? f.filter(allVolcanoes, param)
+            : f.filter(allVolcanoes);
+        result.push(...output);
       }
     });
 
@@ -34,12 +42,42 @@ function App() {
     );
   };
 
+  const handleSelectChange = (filterId: string, value: string) => {
+    setSelectedValues((prev) => ({
+      ...prev,
+      [filterId]: value,
+    }));
+
+    setActiveFilters((prev) => {
+      if (value === "") {
+        return prev.filter((f) => f !== filterId);
+      }
+
+      if (!prev.includes(filterId)) {
+        return [...prev, filterId];
+      }
+
+      return prev;
+    });
+  };
+
+  const countryOptions = Array.from(
+    new Set(allVolcanoes.map((v) => v.country).filter(Boolean))
+  ).sort();
+
   return (
     <div style={{ position: "relative" }}>
       <FilterPanel
         filters={activeFilters}
+        selectedValues={selectedValues}
+        availableFilters={filters.map((f) => ({
+          id: f.id,
+          label: f.label,
+          type: f.type,
+        }))}
         onToggleFilter={toggleFilter}
-        availableFilters={filters.map((f) => ({ id: f.id, label: f.label }))}
+        onSelectChange={handleSelectChange}
+        countryOptions={countryOptions}
       />
       <WorldMap volcanoList={filteredVolcanoes} />
     </div>

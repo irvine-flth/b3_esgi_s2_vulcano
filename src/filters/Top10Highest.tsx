@@ -2,6 +2,7 @@ import { Volcano } from "../types";
 
 export const id = "Top10Highest";
 export const label = "Top 10 les plus hauts";
+export const type = "checkbox";
 
 export function filter(data: Volcano[]): Volcano[] {
   return [...data]
