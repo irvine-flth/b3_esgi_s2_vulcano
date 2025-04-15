@@ -1,8 +1,8 @@
 export interface Volcano {
   id?: number;
   name: string;
-  latitude: number;
-  longitude: number;
+  latitude: string;
+  longitude: string;
   elevation?: number;
   type?: string;
   country?: string;
