@@ -9,6 +9,7 @@ export const filters = [
   All,
   Top10Highest,
   Top10Lowest,
+	Top10LastActivity,
   ActiveEurope,
-  ByCountry,
+  ByCountry
 ];
