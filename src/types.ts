@@ -8,4 +8,5 @@ export interface Volcano {
   country?: string;
   regionGroup?: string;
   activity?: string;
+  lastEruption?: string;
 }
