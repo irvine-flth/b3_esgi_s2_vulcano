@@ -22,7 +22,5 @@ export function filter(data: Volcano[]): Volcano[] {
     .filter((v) => extractYear(v.lastEruption) !== null)
     .sort((a, b) => (b.elevation ?? 0) - (a.elevation ?? 0));
 
-    var test = filtered.slice(0, 10);
-console.log("Filtered data:", test); // Log the filtered data
   return filtered.slice(0, 10);
 }
