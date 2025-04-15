@@ -2,22 +2,15 @@ import { FC } from "react";
 
 interface FilterPanelProps {
   filters: string[];
+  availableFilters: { id: string; label: string }[];
   onToggleFilter: (filter: string) => void;
 }
 
-const availableFilters = [
-  "Top10Highest",
-  "Top10Lowest",
-  "RecentlyActive",
-  "StratoVolcanoes",
-  "ActiveEurope",
-  "ActiveUSA",
-  "ActiveSouthAmerica",
-  "ByContinent",
-  "ByCountry",
-];
-
-const FilterPanel: FC<FilterPanelProps> = ({ filters, onToggleFilter }) => {
+const FilterPanel: FC<FilterPanelProps> = ({
+  filters,
+  availableFilters,
+  onToggleFilter,
+}) => {
   return (
     <div
       style={{
@@ -32,17 +25,17 @@ const FilterPanel: FC<FilterPanelProps> = ({ filters, onToggleFilter }) => {
         zIndex: 1000,
       }}
     >
-      <h3>Filters</h3>
+      <h3>Filtres</h3>
       {availableFilters.map((filter) => (
-        <div key={filter}>
+        <div key={filter.id}>
           <input
             type="checkbox"
-            id={filter}
-            checked={filters.includes(filter)}
-            onChange={() => onToggleFilter(filter)}
+            id={filter.id}
+            checked={filters.includes(filter.id)}
+            onChange={() => onToggleFilter(filter.id)}
           />
-          <label htmlFor={filter} style={{ marginLeft: "0.5rem" }}>
-            {filter}
+          <label htmlFor={filter.id} style={{ marginLeft: "0.5rem" }}>
+            {filter.label}
           </label>
         </div>
       ))}

@@ -1,15 +1,6 @@
 import { FC } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-
-export interface Volcano {
-  id?: number;
-  name: string;
-  latitude: number;
-  longitude: number;
-  elevation?: number;
-  type?: string;
-  country?: string;
-}
+import { Volcano } from "../types";
 
 interface WorldMapProps {
   volcanoList: Volcano[];
