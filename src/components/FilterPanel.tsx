@@ -6,8 +6,8 @@ interface FilterPanelProps {
   availableFilters: { id: string; label: string; type: string }[];
   onToggleFilter: (filter: string) => void;
   onSelectChange: (filterId: string, value: string) => void;
-  countryOptions?: string[];
-  regionOptions?: string[];
+  countryOptions?: (string | undefined)[];
+  regionOptions?: (string | undefined)[];
 }
 
 const FilterPanel: FC<FilterPanelProps> = ({
