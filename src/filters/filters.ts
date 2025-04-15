@@ -1,9 +1,10 @@
 import * as Top10Highest from "./Top10Highest";
 import * as All from "./All";
 import * as Top10Lowest from "./Top10Lowest";
-import * as ActiveEurope from "./ActiveEurope";
 import * as Top10LastActivity from "./Top10LastActivity";
+import * as ActiveEurope from "./ActiveEurope";
 import * as ActiveSouthAme from "./ActiveSouthAme";
+import * as ActiveUSA from "./ActiveUSA";
 import * as ByCountry from "./ByCountry";
 
 
@@ -14,5 +15,6 @@ export const filters = [
 	Top10LastActivity,
   ActiveEurope,
 	ActiveSouthAme,
+	ActiveUSA,
   ByCountry
 ];
