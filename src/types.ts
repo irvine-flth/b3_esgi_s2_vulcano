@@ -6,4 +6,6 @@ export interface Volcano {
   elevation?: number;
   type?: string;
   country?: string;
+  regionGroup?: string;
+  activity?: string;
 }
