@@ -34,7 +34,7 @@ function App() {
 
     const unique = new Map(result.map((v) => [v.id ?? v.name, v]));
     setFilteredVolcanoes(Array.from(unique.values()));
-  }, [activeFilters, allVolcanoes]);
+  }, [activeFilters, allVolcanoes, selectedValues]);
 
   const toggleFilter = (id: string) => {
     setActiveFilters((prev) =>
