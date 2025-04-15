@@ -35,6 +35,8 @@ const WorldMap: FC<WorldMapProps> = ({ volcanoList }) => {
             Type : {volcano.type ?? "Non précisé"}
             <br />
             Pays : {volcano.country ?? "Non précisé"}
+            <br />
+            Dernière éruption : {volcano.lastEruption ?? "Non précisé"}
           </Popup>
         </Marker>
       ))}
