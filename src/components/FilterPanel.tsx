@@ -8,6 +8,7 @@ interface FilterPanelProps {
   onSelectChange: (filterId: string, value: string) => void;
   countryOptions?: (string | undefined)[];
   regionOptions?: (string | undefined)[];
+  toggleTectonicPoints: () => void;
 }
 
 const FilterPanel: FC<FilterPanelProps> = ({
@@ -18,6 +19,7 @@ const FilterPanel: FC<FilterPanelProps> = ({
   onSelectChange,
   countryOptions,
   regionOptions,
+  toggleTectonicPoints,
 }) => {
   return (
     <div
@@ -88,6 +90,16 @@ const FilterPanel: FC<FilterPanelProps> = ({
           )}
         </div>
       ))}
+      <>
+        <input
+          type="checkbox"
+          id="TectonicPoints"
+          onChange={() => toggleTectonicPoints()}
+        />
+        <label htmlFor="TectonicPoints" style={{ marginLeft: "0.5rem" }}>
+          Plaques tectoniques
+        </label>
+      </>
     </div>
   );
 };

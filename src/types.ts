@@ -10,3 +10,9 @@ export interface Volcano {
   activity?: string;
   lastEruption?: string;
 }
+
+export interface TectonicPoint {
+  plate: string;
+  lat: number;
+  lon: number;
+}

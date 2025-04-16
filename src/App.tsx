@@ -11,6 +11,7 @@ function App() {
   const [selectedValues, setSelectedValues] = useState<Record<string, string>>(
     {}
   );
+  const [showTectonicPoints, setShowTectonicPoints] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("/data/vulcanoes.json")
@@ -83,8 +84,12 @@ function App() {
         onSelectChange={handleSelectChange}
         countryOptions={countryOptions}
         regionOptions={regionOptions}
+        toggleTectonicPoints={() => setShowTectonicPoints(!showTectonicPoints)}
       />
-      <WorldMap volcanoList={filteredVolcanoes} />
+      <WorldMap
+        volcanoList={filteredVolcanoes}
+        showTectonicPoints={showTectonicPoints}
+      />
     </div>
   );
 }
